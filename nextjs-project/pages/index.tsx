@@ -24,7 +24,7 @@ export default function Home() {
         <CasesSlider />
       </Section>
 
-      <Section id="about" title="About Us">
+      <Section id="about" title="About Us" dataAos="fade-up">
         <p>Learn more about our company, our mission, and our values. We are passionate about what we do and dedicated to our clients' success.</p>
       </Section>
 
