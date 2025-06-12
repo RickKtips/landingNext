@@ -1,0 +1,74 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--header-bg); /* Use CSS variable */
+  color: var(--header-text-color); /* Use CSS variable */
+  padding: 1rem 0;
+  z-index: 1000;
+  transition: padding 0.3s ease-in-out;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Add box shadow */
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+}
+
+.navItem {
+  margin: 0 0.5rem; /* Reduced margin slightly */
+}
+
+.navLink {
+  color: var(--header-text-color); /* Use CSS variable */
+  text-decoration: none;
+  font-size: 1.1rem;
+  padding: 0.5rem 1rem; /* Consistent padding */
+  display: inline-block;
+  border-radius: 4px; /* Add slight rounding to hover */
+  transition: background-color 0.2s ease-in-out;
+}
+
+.navLink:hover {
+  background-color: var(--header-hover-bg); /* Use CSS variable for hover */
+  text-decoration: none; /* Remove underline on hover as bg changes */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .header {
+    padding: 0.5rem 0;
+  }
+
+  .nav {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .navItem {
+    margin: 0.5rem 0;
+    width: 100%; /* Make nav items take full width for better tap targets */
+    text-align: center; /* Center text within nav items */
+  }
+
+  .navLink {
+    font-size: 1rem;
+    padding: 0.75rem 1rem; /* Increase padding for easier tap */
+    display: block; /* Make link take full width of list item */
+    width: 90%; /* Control width of the link itself */
+    margin: 0 auto; /* Center the link block */
+  }
+}
+
+@media (max-width: 480px) {
+  .navLink {
+    font-size: 0.9rem;
+    padding: 0.6rem 0.8rem;
+  }
+}
