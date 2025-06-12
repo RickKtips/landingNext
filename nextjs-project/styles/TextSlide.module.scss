@@ -1,0 +1,47 @@
+.textSlide {
+  padding: 20px;
+  background-color: #f0f0f0; /* Light gray background */
+  border: 1px solid #ddd;
+  min-height: 300px; /* Ensure slide has some height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #333;
+}
+
+.title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--secondary-color, #1a1a1a);
+}
+
+.text {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  max-width: 90%; /* Ensure text doesn't go too wide */
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 1.8rem;
+  }
+  .text {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .textSlide {
+    padding: 15px;
+    min-height: 250px; /* Adjust height for smaller screens */
+  }
+  .title {
+    font-size: 1.5rem;
+  }
+  .text {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+}

@@ -1,0 +1,80 @@
+.imageAlbumSlide {
+  padding: 20px;
+  background-color: #e9e9e9; /* Different background for variety */
+  border: 1px solid #ccc;
+  min-height: 300px; /* Ensure slide has some height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.title {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: var(--secondary-color, #1a1a1a);
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center; /* Align items in case of wrapping */
+  gap: 10px;
+  width: 100%;
+  max-width: 700px; /* Limit gallery width */
+}
+
+.imageContainer {
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  transition: width 0.3s ease, height 0.3s ease; /* Smooth transition for size changes */
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 1.8rem;
+  }
+  .gallery {
+    gap: 8px;
+  }
+  .imageContainer {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  .imageAlbumSlide {
+    padding: 15px;
+    min-height: 280px; /* Adjust height */
+  }
+  .title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .gallery {
+    gap: 5px;
+  }
+  .imageContainer {
+    width: 100px; /* Smaller images for mobile */
+    height: 100px;
+  }
+}
+
+@media (max-width: 360px) {
+  .imageContainer {
+    width: 80px; /* Even smaller for very narrow screens */
+    height: 80px;
+  }
+}

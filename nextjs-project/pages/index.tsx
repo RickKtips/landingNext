@@ -1,13 +1,14 @@
 import Head from 'next/head';
 import styles from '@/styles/Home.module.scss';
 import Section from '@/components/Section';
+import CasesSlider from '@/components/CasesSlider'; // Corrected import path
 
 export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
         <title>Next.js Landing Page</title>
-        <meta name="description" content="Landing page with multiple sections" />
+        <meta name="description" content="Landing page with multiple sections and case slider" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -20,7 +21,7 @@ export default function Home() {
       </Section>
 
       <Section id="cases" title="Case Studies">
-        <p>Read through our case studies to see how we've helped other clients succeed. Real-world examples of our impact and expertise.</p>
+        <CasesSlider />
       </Section>
 
       <Section id="about" title="About Us">

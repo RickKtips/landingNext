@@ -1,0 +1,170 @@
+.casesSliderContainer {
+  width: 90%;
+  max-width: 900px;
+  margin: 3rem auto; /* Increased top/bottom margin */
+  padding: 20px;
+  background-color: var(--section-bg-cases, #fff); /* Use variable, fallback */
+  border-radius: 8px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* Slightly more pronounced shadow */
+  position: relative; /* Needed for absolute positioning of arrows if they are inside */
+}
+
+/* Custom Arrows Styling */
+.customArrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  cursor: pointer;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  width: 40px; /* Slightly larger */
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.customArrow:hover {
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.customArrow::before {
+  font-size: 20px;
+  color: var(--primary-color, #0070f3);
+  line-height: 1; /* Ensure proper vertical alignment of arrow character */
+}
+
+.customPrevArrow {
+  left: -20px; /* Position outside by default */
+}
+.customPrevArrow::before {
+  content: '‹'; /* Using a more common chevron */
+}
+
+.customNextArrow {
+  right: -20px; /* Position outside by default */
+}
+.customNextArrow::before {
+  content: '›'; /* Using a more common chevron */
+}
+
+/* Custom Dots Styling */
+.customDotsContainer {
+  bottom: -30px; /* Position dots below the slider */
+  position: relative; /* If not using absolute positioning on slick-dots */
+  text-align: center; /* Center the dots */
+}
+
+.customDotsContainer ul { /* This is :global(.slick-dots) essentially */
+  margin: 0;
+  padding: 0;
+  display: inline-block; /* Allows centering of the ul itself if needed */
+}
+
+.customDotsContainer li {
+  display: inline-block;
+  margin: 0 5px;
+  padding: 0;
+  width: auto; /* Override default slick dot li width if necessary */
+  height: auto; /* Override default slick dot li height */
+}
+
+.customDot {
+  width: 10px;
+  height: 10px;
+  background-color: #ccc;
+  border-radius: 50%;
+  display: block; /* Make it block to fill the li or control size directly */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  padding: 0; /* Remove any padding from button element if react-slick uses button */
+  border: none; /* Remove border from button element */
+  font-size: 0; /* Hide numbers if react-slick adds them */
+}
+
+/* Active dot */
+.customDotsContainer :global(li.slick-active) .customDot {
+  background-color: var(--primary-color, #0070f3);
+  width: 12px; /* Slightly larger active dot */
+  height: 12px; /* Slightly larger active dot */
+}
+
+
+/* Media Queries for Arrows and Dots */
+@media (max-width: 768px) {
+  .customPrevArrow {
+    left: 10px; /* Bring arrows inside on tablets */
+  }
+  .customNextArrow {
+    right: 10px; /* Bring arrows inside on tablets */
+  }
+  .customArrow {
+    width: 35px;
+    height: 35px;
+  }
+  .customArrow::before {
+    font-size: 18px;
+  }
+  .customDotsContainer {
+    bottom: -25px;
+  }
+}
+
+@media (max-width: 480px) {
+  .casesSliderContainer {
+    width: 100%; /* Full width, no side padding on the container itself */
+    padding: 10px 0; /* Padding top/bottom, no side padding */
+    margin: 1rem auto;
+    border-radius: 0;
+    box-shadow: none; /* Optional: remove shadow on smallest screens */
+  }
+
+  .customPrevArrow {
+    left: 5px;
+    background-color: rgba(0, 0, 0, 0.3); /* Darker background for contrast on potentially varied slide content */
+  }
+  .customNextArrow {
+    right: 5px;
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+  .customArrow {
+    width: 30px;
+    height: 30px;
+  }
+  .customArrow::before {
+    font-size: 16px;
+    color: #fff; /* White arrows on darker background */
+  }
+
+  .customDotsContainer {
+    bottom: -20px;
+  }
+  .customDot {
+    width: 8px;
+    height: 8px;
+  }
+  .customDotsContainer :global(li.slick-active) .customDot {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+/* Ensure slides have some basic styling if not overridden by TextSlide/ImageAlbumSlide specifics */
+.casesSliderContainer :global(.slick-slide) {
+  padding: 0 10px; /* Add some horizontal padding to the slide itself to prevent content touching edges */
+  box-sizing: border-box;
+}
+
+.casesSliderContainer :global(.slick-slide > div) {
+  /* This targets the direct child of slick-slide, which usually wraps your actual slide component */
+  /* margin: 0 10px; /* Removed this, use padding on .slick-slide itself */
+}
+
+.casesSliderContainer :global(.slick-list) {
+  /* The track of the slider */
+  /* margin: 0 -10px; /* Counteract the padding on .slick-slide if you want slides to visually align with container edges */
+  overflow: hidden; /* Default is usually fine, but can be 'visible' if you have overflowing elements like shadows */
+}
