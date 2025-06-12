@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import styles from '@/styles/Section.module.css';
+import styles from '@/styles/Section.module.scss';
 
 const Section = ({ id, title, children }) => {
   const [isVisible, setIsVisible] = useState(false);
