@@ -1,5 +1,5 @@
 .header {
-  position: fixed;
+  position: fixed; text-transform: uppercase;
   top: 0;
   left: 0;
   width: 100%;
@@ -19,6 +19,20 @@
   margin: 0;
   padding: 0;
   flex-wrap: wrap;
+  &::after{
+    content: "";
+    display: flex; 
+    height: 40px; width: 40px; 
+    background: url('img/image20.png') no-repeat;
+    background-size: contain;
+  }
+  .logo{
+    display: flex; margin: 0 5rem;
+    height: 30px; width: 200px; 
+    background: url('img/image22.png') no-repeat;
+    background-size: contain;
+     text-indent: -9999px; 
+  }
 }
 
 .navItem {

@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import styles from '@/styles/Section.module.scss';
 
-const Section = ({ id, title, children, dataAos }) => {
+const Section = ({ id, title, children }) => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
 
@@ -43,7 +43,7 @@ const Section = ({ id, title, children, dataAos }) => {
       id={id}
       ref={sectionRef}
       className={`${styles.section} ${isVisible ? styles.isVisible : ''} ${backgroundClass}`}
-      data-aos={dataAos} // Apply the dataAos prop here
+      
     >
       <div className={styles.content}>
         <h2 className={styles.title}>{title}</h2>

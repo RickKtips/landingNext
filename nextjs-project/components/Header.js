@@ -15,7 +15,16 @@ const Header = () => {
   return (
     <header className={styles.header}>
       <nav>
+       
         <ul className={styles.nav}>
+          <li className={styles.navItem}>
+            <Link href="#banner" legacyBehavior>
+              <a className={styles.navLink} onClick={(e) => handleScroll(e, 'banner')}>
+                Solutions
+             <h1 className={styles.logo}>Next3</h1>
+             </a>
+            </Link>
+          </li>
           <li className={styles.navItem}>
             <Link href="#solutions" legacyBehavior>
               <a className={styles.navLink} onClick={(e) => handleScroll(e, 'solutions')}>
