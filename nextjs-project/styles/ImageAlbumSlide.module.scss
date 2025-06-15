@@ -1,19 +1,26 @@
 .imageAlbumSlide {
   padding: 20px;
-  background-color: #e9e9e9; /* Different background for variety */
-  border: 1px solid #ccc;
   min-height: 300px; /* Ensure slide has some height */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
+  
 }
 
 .title {
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
-  color: var(--secondary-color, #1a1a1a);
+  font-size: 5rem;
+  line-height: 4rem;
+  margin: 2rem 0 -1rem 2rem;
+  width: 100%;
+  text-align: left;
+  position: relative;
+  z-index: 20;
+  color: var(--secondary-color);
+  span{
+    color: var(--primary-color);
+  }
 }
 
 .gallery {
@@ -23,12 +30,13 @@
   align-items: center; /* Align items in case of wrapping */
   gap: 10px;
   width: 100%;
-  max-width: 700px; /* Limit gallery width */
+  max-width: 100%; /* Limit gallery width */
 }
 
 .imageContainer {
-  width: 150px;
-  height: 150px;
+  width:30%;
+  max-width: 410px; /* Limit maximum width */
+  height: auto;
   overflow: hidden;
   border: 1px solid #ddd;
   background-color: #fff;

@@ -6,7 +6,7 @@ const ImageAlbumSlide = ({ images, title }) => {
     return (
       <div className={styles.imageAlbumSlide}>
         <h2 className={styles.title}>{title || 'Image Album'}</h2>
-        <p>No images to display.</p>
+        <p>Album vazio</p>
       </div>
     );
   }

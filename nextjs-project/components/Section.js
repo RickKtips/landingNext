@@ -46,8 +46,7 @@ const Section = ({ id, title, children }) => {
       
     >
       <div className={styles.content}>
-        <h2 className={styles.title}>{title}</h2>
-        <div>{children}</div>
+        {children}
       </div>
     </section>
   );

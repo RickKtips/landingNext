@@ -1,6 +1,7 @@
 import React from 'react';
 import Slider from 'react-slick';
 import TextSlide from './TextSlide';
+import TextSlide2 from './TextSlide2';
 import ImageAlbumSlide from './ImageAlbumSlide';
 import styles from '@/styles/CasesSlider.module.scss';
 
@@ -31,11 +32,11 @@ const CasesSlider = () => {
   const settings = {
     dots: true,
     infinite: true,
-    speed: 500,
+    speed: 5000,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 5000,
+    autoplaySpeed: 10000,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
     dotsClass: `slick-dots ${styles.customDotsContainer}`, // Add custom class to dots container
@@ -69,23 +70,25 @@ const CasesSlider = () => {
   const slidesData = [
     {
       type: 'text',
-      title: 'Detailed Case Analysis 1',
-      text: 'This is a paragraph providing a detailed analysis of a specific case. It outlines the challenges, methodologies, and outcomes, demonstrating our expertise and problem-solving capabilities in real-world scenarios for Client Alpha.',
+      title: 'SKOL<span> Umbrellas</span>',
+      text: '2020 SUMMER UMBRELLAS',
     },
     {
       type: 'imageAlbum',
-      title: 'Visual Showcase: Project Highlights',
+      title: 'Process',
       images: [
-        { src: '/images/cases/placeholderA.jpg', alt: 'Placeholder Image A - Abstract Design Concept' },
-        { src: '/images/cases/placeholderB.jpg', alt: 'Placeholder Image B - Data Visualization Example' },
-        { src: '/images/cases/placeholderC.jpg', alt: 'Placeholder Image C - User Interface Mockup' },
-        { src: '/images/cases/placeholderD.jpg', alt: 'Placeholder Image D - Team Collaboration' },
+        { src: './image84.png', alt: 'SKOL 2020 Summer Umbrellas' },
+        { src: './image79.png', alt: 'SKOL 2020 Summer Umbrellas' },
+        { src: './image76.png', alt: 'SKOL 2020 Summer Umbrellas' },
+        { src: './image72.png', alt: 'SKOL 2020 Summer Umbrellas' },
+        { src: './image77.png', alt: 'SKOL 2020 Summer Umbrellas' },
+        { src: './image78.png', alt: 'SKOL 2020 Summer Umbrellas' },        
       ],
     },
     {
-      type: 'text',
-      title: 'Detailed Case Analysis 2',
-      text: 'Another example of our work, this case study focuses on Client Beta. We discuss the unique approach taken to overcome specific industry challenges, leading to significant improvements in their operational metrics.',
+      type: 'text2',
+      title: 'Skol Challenge',
+      text: 'To setup a local operation to make feasible a big summer campaign for Skol in brazil. The key challenge was to produce 20+ units of a promotional branded umbrella, without depending on a specific local supplier that dominated the market. And should do that reducing costs without reducing quality.',
     },
   ];
 
@@ -97,6 +100,8 @@ const CasesSlider = () => {
             return <TextSlide key={index} title={slide.title} text={slide.text} />;
           } else if (slide.type === 'imageAlbum') {
             return <ImageAlbumSlide key={index} title={slide.title} images={slide.images} />;
+          }else if (slide.type === 'text2') {
+            return <TextSlide2 key={index} title={slide.title} text={slide.text}  />;
           }
           return null;
         })}

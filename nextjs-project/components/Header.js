@@ -20,8 +20,7 @@ const Header = () => {
           <li className={styles.navItem}>
             <Link href="#banner" legacyBehavior>
               <a className={styles.navLink} onClick={(e) => handleScroll(e, 'banner')}>
-                Solutions
-             <h1 className={styles.logo}>Next3</h1>
+                <span><h1 className={styles.logo}>Next3</h1></span>
              </a>
             </Link>
           </li>
@@ -46,6 +45,13 @@ const Header = () => {
               </a>
             </Link>
           </li>
+          <li className={styles.navItem}>
+            <Link href="#clients" legacyBehavior>
+              <a className={styles.navLink} onClick={(e) => handleScroll(e, 'clients')}>
+                Clients
+              </a>
+            </Link>
+          </li>          
           <li className={styles.navItem}>
             <Link href="#about" legacyBehavior>
               <a className={styles.navLink} onClick={(e) => handleScroll(e, 'about')}>

@@ -1,11 +1,8 @@
 .casesSliderContainer {
-  width: 90%;
-  max-width: 900px;
+  width: 100%;
+  height: 100vh;
   margin: 3rem auto; /* Increased top/bottom margin */
   padding: 20px;
-  background-color: var(--section-bg-cases, #fff); /* Use variable, fallback */
-  border-radius: 8px;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* Slightly more pronounced shadow */
   position: relative; /* Needed for absolute positioning of arrows if they are inside */
 }
 
@@ -17,10 +14,10 @@
   z-index: 10;
   cursor: pointer;
   border: none;
-  background-color: rgba(255, 255, 255, 0.7);
-  border-radius: 50%;
+  background-color:var(--primary-color, rgba(255, 255, 255, 0.8)); /* Default to primary color with some transparency */
+  border-radius: 10px;
   width: 40px; /* Slightly larger */
-  height: 40px;
+  height: 300px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -32,23 +29,26 @@
 }
 
 .customArrow::before {
-  font-size: 20px;
-  color: var(--primary-color, #0070f3);
-  line-height: 1; /* Ensure proper vertical alignment of arrow character */
+  font-size: 6rem;
+  font-family:"Bebas Neue", sans-serif; /* Ensure the font is applied */
+  color: var(--white-color);
+  line-height: 300px; /* Ensure proper vertical alignment of arrow character */
 }
 
 .customPrevArrow {
-  left: -20px; /* Position outside by default */
+  left: 20px; /* Position outside by default */
 }
 .customPrevArrow::before {
   content: '‹'; /* Using a more common chevron */
+  margin-left: 10px;
 }
 
 .customNextArrow {
-  right: -20px; /* Position outside by default */
+  right: 20px; /* Position outside by default */
 }
 .customNextArrow::before {
   content: '›'; /* Using a more common chevron */
+  margin-left: 10px;
 }
 
 /* Custom Dots Styling */

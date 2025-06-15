@@ -1,16 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 :root {
-  --primary-color: #0070f3; /* Next.js blue as an example */
-  --secondary-color: #1a1a1a; /* Darker text for titles */
+  --primary-color: #efb433; /* Next.js blue as an example */
+  --secondary-color: #000000; /* Darker text for titles */
+  --thirdary-color: #848484; /* White for backgrounds */
+  --white-color: #ffffff; 
   --header-bg: #ffffff;
-  --header-text-color: #333;
+  --header-text-color: #000000;
   --header-hover-bg: #e0e0e0;
-  --section-bg-solutions: #ffffff;
-  --section-bg-differentials: #f0f0f0; /* Slightly different for alternation */
+  --section-bg-solutions: #f0f0f0;
+  --section-bg-differentials: #ffffff; /* Slightly different for alternation */
   --section-bg-cases: #ffffff;
   --section-bg-about: #f0f0f0; /* Slightly different for alternation */
-  --section-bg-contact: #ffffff;
-  --text-color: #333;
+  --section-bg-contact: #000000;
+  --text-color: #000;
   --page-bg: #f9f9f9; /* Light gray background for the page */
 }
 
@@ -31,6 +34,7 @@ body {
   font-family:"Bebas Neue", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-weight: 400;
   font-style: normal;
+  text-align: left;
   line-height: 1.6;
   color: var(--text-color);
   background-color: var(--page-bg);
@@ -42,10 +46,22 @@ body {
 #__next {
   height: 100%;
 }
-
+h3{
+    color: var(--secondary-color);
+    font-size: 7em;
+    margin: 0; width: auto;
+    line-height: 7rem;
+    text-align: left;
+    span{
+      color: var(--primary-color);
+    }
+}
 a {
-  color: var(--primary-color);
+  color: var(--secondary-color);
   text-decoration: none;
+   font-family:"Bebas Neue", sans-serif;
+   font-size: 1.2rem;
+   
 }
 
 a:hover {
@@ -55,4 +71,9 @@ a:hover {
 img {
   max-width: 100%;
   display: block;
+}
+ul{
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
 }
