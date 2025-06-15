@@ -72,7 +72,7 @@
   }
 
   .navLink {
-    font-size: 1rem;
+    font-size: 1.1rem; /* Increased */
     padding: 0.75rem 1rem; /* Increase padding for easier tap */
     display: block; /* Make link take full width of list item */
     width: 90%; /* Control width of the link itself */
@@ -82,7 +82,7 @@
 
 @media (max-width: 480px) {
   .navLink {
-    font-size: 0.9rem;
+    font-size: 1rem; /* Increased */
     padding: 0.6rem 0.8rem;
   }
 }

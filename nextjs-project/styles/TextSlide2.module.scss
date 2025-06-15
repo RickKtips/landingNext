@@ -117,12 +117,14 @@ font-family: "Montserrat", sans-serif;
   }
 
   .title {
-    font-size: 2.5rem; /* Adjusted from 1.8rem, ensure it's impactful */
+    font-size: 2.7rem; /* Increased */
+    line-height: 2.9rem; /* Added */
     margin: 0 0 1rem 0; /* Adjust margins for centered layout */
     text-align: center;
   }
   .text {
-    font-size: 1rem;
+    font-size: 1.05rem; /* Increased */
+    line-height: 1.4rem; /* Added */
     padding-left: 0; /* Remove side padding if centered */
     max-width: 90%; /* Allow text to be wider */
     text-align: center; /* Center text */
@@ -153,11 +155,11 @@ font-family: "Montserrat", sans-serif;
 
     .list1 {
       .how {
-        font-size: 1.8rem; /* Adjust size */
+        font-size: 2rem; /* Increased */
       }
       li {
-        font-size: 0.9rem; /* Adjust size */
-        line-height: 1.8rem;
+        font-size: 0.95rem; /* Increased */
+        line-height: 1.85rem; /* Adjusted */
       }
     }
 
@@ -170,8 +172,8 @@ font-family: "Montserrat", sans-serif;
         flex-direction: column; /* Stack icon and text for now, or row with alignment */
         align-items: center; /* Center items */
         margin-bottom: 1rem; /* Adjust margin */
-        font-size: 0.9rem;
-        line-height: 1.2rem;
+        font-size: 0.95rem; /* Increased */
+        line-height: 1.3rem; /* Adjusted */
         &::before {
           float: none; /* Remove float */
           margin: 0 0 0.5rem 0; /* Adjust margin for centered icon above text */
@@ -189,10 +191,11 @@ font-family: "Montserrat", sans-serif;
     min-height: auto; /* Let content define height */
   }
   .title {
-    font-size: 1.5rem;
+    font-size: 1.8rem; /* Increased */
+    line-height: 2rem; /* Added */
   }
   .text {
-    font-size: 0.9rem;
-    line-height: 1.5;
+    font-size: 0.95rem; /* Increased */
+    line-height: 1.55; /* Adjusted */
   }
 }
