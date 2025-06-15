@@ -1,10 +1,62 @@
 import Head from 'next/head';
+import { useEffect, useRef } from 'react'; // Added useEffect and useRef
 import styles from '@/styles/Home.module.scss';
 import Section from '@/components/Section';
 import CasesSlider from '@/components/CasesSlider'; // Corrected import path
 import { YouTubeEmbed } from '@next/third-parties/google';
+import { registerParallaxElement, unregisterParallaxElement } from '../utils'; // Imported parallax functions
 
 export default function Home() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const textContainerRef = useRef<HTMLDivElement>(null);
+  const ecoSystemRef = useRef<HTMLDivElement>(null);
+  const weAreDifferentBannerRef = useRef<HTMLDivElement>(null);
+  const globalMapRef = useRef<HTMLDivElement>(null); // Added globalMapRef
+  const aboutUsImageRef = useRef<HTMLDivElement>(null); // Added aboutUsImageRef
+
+  useEffect(() => {
+    if (videoRef.current) {
+      registerParallaxElement(videoRef.current, 0.5);
+    }
+    if (textContainerRef.current) {
+      registerParallaxElement(textContainerRef.current, 0.8);
+    }
+    if (ecoSystemRef.current) {
+      registerParallaxElement(ecoSystemRef.current, 0.6);
+    }
+    if (weAreDifferentBannerRef.current) {
+      registerParallaxElement(weAreDifferentBannerRef.current, 0.7);
+    }
+    if (globalMapRef.current) { // Added registration for globalMapRef
+      registerParallaxElement(globalMapRef.current, 0.65);
+    }
+    if (aboutUsImageRef.current) { // Added registration for aboutUsImageRef
+      registerParallaxElement(aboutUsImageRef.current, 0.75);
+    }
+
+    // Cleanup function to unregister elements on component unmount
+    return () => {
+      if (videoRef.current) {
+        unregisterParallaxElement(videoRef.current);
+      }
+      if (textContainerRef.current) {
+        unregisterParallaxElement(textContainerRef.current);
+      }
+      if (ecoSystemRef.current) {
+        unregisterParallaxElement(ecoSystemRef.current);
+      }
+      if (weAreDifferentBannerRef.current) {
+        unregisterParallaxElement(weAreDifferentBannerRef.current);
+      }
+      if (globalMapRef.current) { // Added unregistration for globalMapRef
+        unregisterParallaxElement(globalMapRef.current);
+      }
+      if (aboutUsImageRef.current) { // Added unregistration for aboutUsImageRef
+        unregisterParallaxElement(aboutUsImageRef.current);
+      }
+    };
+  }, []); // Empty dependency array ensures this runs once on mount and cleans up on unmount
+
   return (
     <div className={styles.container}>
       <Head>
@@ -14,10 +66,12 @@ export default function Home() {
       </Head>
 <Section id="banner" title="Inicio">
 <div className={styles.banner}>
-<video autoPlay muted loop>
+{/* Added ref to video element */}
+<video ref={videoRef} autoPlay muted loop>
 <source src="NEXT3REEL2.webm" type="video/webm" />
 </video>
-<div>
+{/* Added ref to text container div */}
+<div ref={textContainerRef}>
 <h2  data-aos="fade-left">we bring<br />
 your <span>ideas</span><br />
 to <span>life</span><br />
@@ -82,7 +136,7 @@ Our technical background ensures safe, precise work with strong focus on cost-ef
         <h3 data-aos="fade-right">business<br /><span>Ecosystem</span></h3>
         <h4 data-aos="fade-left">NEXT3 is the single point of contact for streamlined and efficient management. Through a specialized ecosystem of companies, we integrate specific solutions across the entire chain. from strategy to execution, ensuring synergy, agility, and superior results at every stage.</h4>
         </div>
-        <div className={styles.ecoSystem}></div>
+        <div ref={ecoSystemRef} className={styles.ecoSystem}></div> {/* Added ref to ecoSystem div */}
         </section>
     <section className={styles.suppliers}>
       <div>
@@ -105,7 +159,7 @@ Our technical background ensures safe, precise work with strong focus on cost-ef
       <section  className={styles.weAreDifferent}>
         <div>
         <h3 data-aos="fade-right">We are <span>Different</span></h3>
-        <div className={styles.banner} data-aos="fade-left"></div>
+        <div ref={weAreDifferentBannerRef} className={styles.banner} data-aos="fade-left"></div> {/* Added ref to weAreDifferent banner div */}
         </div>
 <ul>
 <li data-aos="fade-top">
@@ -179,7 +233,7 @@ We operate a borderless, global product development network, built to identify a
       <section className={styles.globalStructure}>
         <h3 data-aos="fade-right">global<br /><span>structure</span></h3>
         <h4 data-aos="fade-left">our offices:</h4>
-        <div className={styles.globalMap}></div>
+        <div ref={globalMapRef} className={styles.globalMap}></div> {/* Added ref to globalMap div */}
       </section>
 
       <section className={styles.aboutUs2}>
@@ -201,7 +255,7 @@ B&Partners is a collaborative ecosystem designed to drive sustainable growth for
   <a href="https://www.Scoregroup.com.br" target="_blank" rel="noopener noreferrer">www.Scoregroup.com.br</a>
 </li>
         </ul>
-<div>&nbsp;</div>
+<div ref={aboutUsImageRef}>&nbsp;</div> {/* Added ref to the image container div */}
       </section>
       
       </Section>
