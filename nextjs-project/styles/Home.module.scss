@@ -899,6 +899,7 @@ h5{
           margin-left: auto;
           margin-right: auto;
           margin-bottom: 0.3rem;
+          background-position: center center;
           height: 40px; /* Adjust icon size */
         }
       }
@@ -955,7 +956,7 @@ h5{
           line-height: 1.4rem; /* Added */
           color: var(--secondary-color); /* Ensure text is visible */
           &::before { /* Circle styling */
-            margin: 0 10px 0 0;
+            margin: 0 0 0 0;
             vertical-align: middle;
             display: inline-block;
             width: 20px;
@@ -1084,12 +1085,14 @@ h5{
       align-items: center;
       width: 100%;
       .banner {
+        display: none;
         width: 90%;
         max-width: 400px;
         height: 180px;
         background-size: contain;
         margin-bottom: 2rem;
       }
+    }
       ul { /* List of text items */
         flex-direction: column;
         align-items: stretch;
@@ -1097,7 +1100,7 @@ h5{
         width: 100%;
         max-width: 450px;
         li {
-          text-align: left;
+          text-align: center;
           width: 100%;
           font-size: 0.95rem; /* Increased */
           line-height: 1.4rem; /* Increased */
@@ -1112,7 +1115,7 @@ h5{
           }
         }
       }
-    }
+    
   }
 
   .suppliers {
@@ -1166,12 +1169,13 @@ h5{
         margin: 0 auto 2rem auto;
       }
       ul { /* List of client logos */
-        flex-direction: column;
+        flex-direction: row;
+        flex-wrap: wrap;
         align-items: center;
         gap: 1.5rem;
         max-width: 100%;
         li {
-          width: auto;
+          width: 40%;
           margin-bottom: 0.5rem; /* Add margin for stacked items */
           span {
             width: 70px;
@@ -1206,6 +1210,7 @@ h5{
       height: auto;
       min-height: 220px;
       background-size: contain;
+      background-repeat: no-repeat;
       margin: 0 auto;
     }
   }
@@ -1219,7 +1224,7 @@ h5{
     min-height: auto;
     div {
       width: 100%;
-      max-width: 450px;
+      max-width: 320px;
       margin-bottom: 2rem;
       ul { /* Footer links list at 768px */
         flex-direction: column; /* Stack links vertically */
@@ -1233,7 +1238,7 @@ h5{
           text-align: center;
           margin-bottom: 0.2rem; /* Small margin between stacked links */
           a {
-            font-size: 1rem; /* Increased */
+            font-size: 0.8rem; /* Increased */
           }
         }
       }

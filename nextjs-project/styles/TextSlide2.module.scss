@@ -113,13 +113,13 @@ font-family: "Montserrat", sans-serif;
   .textSlide2 {
     flex-direction: column;
     align-items: center; /* Center items when stacked */
-    padding: 20px 1rem; /* Adjust padding */
+    padding: 0 1rem; /* Adjust padding */
   }
 
   .title {
     font-size: 2.7rem; /* Increased */
     line-height: 2.9rem; /* Added */
-    margin: 0 0 1rem 0; /* Adjust margins for centered layout */
+    margin: 0 0 0 0; /* Adjust margins for centered layout */
     text-align: center;
   }
   .text {
@@ -142,7 +142,7 @@ font-family: "Montserrat", sans-serif;
   .lists {
     flex-direction: column;
     align-items: center; /* Center lists when stacked */
-    margin-top: 1rem; /* Reduce top margin */
+    margin-top: 0; /* Reduce top margin */
     gap: 0; /* Remove gap, handle spacing with list margins */
 
     .list1, .list2 {

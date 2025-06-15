@@ -51,6 +51,8 @@
 /* Responsive adjustments for smaller screens */
 @media (max-width: 768px) {
   .section {
+    overflow: hidden;
+    justify-content: flex-start; /* Align content to the top */
     padding: 70px 20px 20px; /* Adjust padding for tablets */
   }
 
