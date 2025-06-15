@@ -18,28 +18,28 @@ export default function Home() {
 
   useEffect(() => {
     if (videoRef.current) {
-      registerParallaxElement(videoRef.current, 0.8); // Updated speedFactor
+      registerParallaxElement(videoRef.current, 0.1); // New strengthFactor
     }
     if (textContainerRef.current) {
-      registerParallaxElement(textContainerRef.current, 0.9); // Updated speedFactor
+      registerParallaxElement(textContainerRef.current, 0.15); // New strengthFactor
     }
     if (ecoSystemRef.current) {
-      registerParallaxElement(ecoSystemRef.current, 0.85); // Updated speedFactor
+      registerParallaxElement(ecoSystemRef.current, 0.1); // New strengthFactor
     }
     if (weAreDifferentBannerRef.current) {
-      registerParallaxElement(weAreDifferentBannerRef.current, 0.85); // Updated speedFactor
+      registerParallaxElement(weAreDifferentBannerRef.current, 0.1); // New strengthFactor
     }
     if (globalMapRef.current) {
-      registerParallaxElement(globalMapRef.current, 0.85); // Updated speedFactor
+      registerParallaxElement(globalMapRef.current, 0.1); // New strengthFactor
     }
     if (aboutUsImageRef.current) {
-      registerParallaxElement(aboutUsImageRef.current, 0.9); // Updated speedFactor
+      registerParallaxElement(aboutUsImageRef.current, 0.08); // New strengthFactor
     }
     if (workflowImageContainerRef.current) {
-      registerParallaxElement(workflowImageContainerRef.current, 0.85); // Updated speedFactor
+      registerParallaxElement(workflowImageContainerRef.current, 0.15); // New strengthFactor
     }
     if (sourcingUlRef.current) {
-      registerParallaxElement(sourcingUlRef.current, 0.8); // Updated speedFactor
+      registerParallaxElement(sourcingUlRef.current, 0.15); // New strengthFactor
     }
 
     // Cleanup function to unregister elements on component unmount
