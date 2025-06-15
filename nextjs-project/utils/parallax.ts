@@ -1,7 +1,9 @@
 interface ParallaxElement {
   element: HTMLElement;
-  speedFactor: number;
-  // initialTop: number; // Removed as it's no longer used
+  initialSpeedFactor: number;
+  isIntersecting: boolean;
+  intersectionRatio: number; // Added to store the intersection ratio
+  observer: IntersectionObserver | null;
 }
 
 const parallaxElements: ParallaxElement[] = [];
@@ -10,15 +12,27 @@ let ticking = false;
 
 const updateParallax = () => {
   if (!parallaxElements.length) {
-    // No need to remove listener here, as it's managed by unregister
+    // If parallaxElements is empty, the listener should ideally have been removed.
+    // This check acts as a safeguard.
+    if (isListening) {
+        window.removeEventListener('scroll', handleScroll);
+        isListening = false;
+    }
     ticking = false;
     return;
   }
 
   parallaxElements.forEach(item => {
     if (item.element) {
-      // Refined calculation:
-      const newTransform = window.scrollY * (item.speedFactor - 1);
+      let speedFactorToUse;
+      // Apply accelerated effect if less than 5% visible (including completely hidden)
+      if (item.intersectionRatio < 0.05) {
+        speedFactorToUse = 1 + (item.initialSpeedFactor - 1) * 2;
+        speedFactorToUse = Math.max(-1, Math.min(3, speedFactorToUse)); // Clamp
+      } else { // Element is 5% or more visible
+        speedFactorToUse = item.initialSpeedFactor;
+      }
+      const newTransform = window.scrollY * (speedFactorToUse - 1);
       item.element.style.transform = `translateY(${newTransform}px)`;
     }
   });
@@ -27,41 +41,81 @@ const updateParallax = () => {
 
 const handleScroll = () => {
   if (!ticking) {
+    ticking = true; // Prevent new frames until this one is done
     window.requestAnimationFrame(() => {
       updateParallax();
-      ticking = true; // Set ticking to true after updateParallax finishes one cycle
+      // updateParallax will set ticking to false, but it's safer to do it here
+      // to ensure it's always reset after the frame.
+      // However, the current structure has updateParallax setting it.
+      // Let's stick to updateParallax setting it to false.
     });
-    ticking = true; // Set to true to prevent multiple animation frame requests for the same scroll event
+  }
+};
+
+const observerOptions: IntersectionObserverInit = {
+  // Thresholds for when the observer's callback should be executed.
+  // More values mean more frequent callbacks as visibility changes.
+  threshold: [0, 0.01, 0.02, 0.03, 0.04, 0.05, 0.1, 0.25, 0.5, 0.75, 1.0],
+};
+
+const observerCallback: IntersectionObserverCallback = (entries) => {
+  let needsUpdate = false;
+  entries.forEach(entry => {
+    const targetElement = entry.target as HTMLElement;
+    const parallaxItem = parallaxElements.find(item => item.element === targetElement);
+    if (parallaxItem) {
+      if (parallaxItem.isIntersecting !== entry.isIntersecting || parallaxItem.intersectionRatio !== entry.intersectionRatio) {
+        needsUpdate = true;
+      }
+      parallaxItem.isIntersecting = entry.isIntersecting;
+      parallaxItem.intersectionRatio = entry.intersectionRatio;
+    }
+  });
+
+  // After updating intersecting states, request a parallax update if changes occurred and listener is active
+  if (needsUpdate && isListening && !ticking) {
+     ticking = true; // Prevent race conditions with scroll-triggered updates
+     window.requestAnimationFrame(updateParallax);
   }
 };
 
 export const registerParallaxElement = (element: HTMLElement, speedFactor: number) => {
   if (!element) return;
 
-  const existingElement = parallaxElements.find(item => item.element === element);
+  let existingElement = parallaxElements.find(item => item.element === element);
   if (existingElement) {
-    existingElement.speedFactor = speedFactor;
-    // Update initial position if already registered and speedFactor changes
-    if (isListening) { // only if listener is active
+    existingElement.initialSpeedFactor = speedFactor;
+    // Ensure observer is active
+    if (!existingElement.observer) {
+        const newObserver = new IntersectionObserver(observerCallback, observerOptions);
+        newObserver.observe(element);
+        existingElement.observer = newObserver;
+    } else {
+        // If observer exists, ensure it's observing. This might be redundant if unobserve isn't misused.
+        existingElement.observer.observe(element);
+    }
+    if (isListening) {
         window.requestAnimationFrame(updateParallax);
     }
     return;
   }
 
+  const observer = new IntersectionObserver(observerCallback, observerOptions);
+  observer.observe(element);
+
   parallaxElements.push({
     element,
-    speedFactor,
-    // initialTop: element.offsetTop, // Removed
+    initialSpeedFactor: speedFactor,
+    isIntersecting: false, // Will be updated by the observer
+    intersectionRatio: 0,  // Will be updated by the observer
+    observer,
   });
 
   if (!isListening && parallaxElements.length > 0) {
     window.addEventListener('scroll', handleScroll);
     isListening = true;
-    // Call updateParallax via rAF to set initial positions correctly,
-    // especially if the page loads scrolled or elements are registered dynamically.
     window.requestAnimationFrame(updateParallax);
   } else if (isListening && parallaxElements.length > 0) {
-    // If already listening and a new element is added, update its position.
     window.requestAnimationFrame(updateParallax);
   }
 };
@@ -71,20 +125,28 @@ export const unregisterParallaxElement = (element: HTMLElement) => {
 
   const index = parallaxElements.findIndex(item => item.element === element);
   if (index > -1) {
-    // Reset transform before removing
-    parallaxElements[index].element.style.transform = '';
+    const item = parallaxElements[index];
+    if (item.observer) {
+      item.observer.unobserve(item.element);
+      item.observer.disconnect();
+    }
+    item.element.style.transform = '';
     parallaxElements.splice(index, 1);
   }
 
   if (parallaxElements.length === 0 && isListening) {
     window.removeEventListener('scroll', handleScroll);
     isListening = false;
-    ticking = false; // Reset ticking state
+    ticking = false;
   }
 };
 
 export const clearAllParallaxElements = () => {
   parallaxElements.forEach(item => {
+    if (item.observer) {
+      item.observer.unobserve(item.element);
+      item.observer.disconnect();
+    }
     if (item.element) {
       item.element.style.transform = '';
     }
@@ -97,11 +159,6 @@ export const clearAllParallaxElements = () => {
   }
 };
 
-// This function's utility is diminished with the registration model,
-// but kept for now as per previous instructions.
-// It might need a re-evaluation of its purpose.
 export const applyParallax = (element: HTMLElement, speedFactor: number) => {
   registerParallaxElement(element, speedFactor);
-  // Note: This doesn't return a way to unregister if used standalone.
-  // The component calling this would need to manage unregistration manually.
 };
