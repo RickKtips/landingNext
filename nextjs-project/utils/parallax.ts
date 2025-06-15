@@ -22,18 +22,11 @@ const updateParallax = () => {
 
   parallaxElements.forEach(item => {
     if (item.element) {
-      // Restoring visibility-based speed factor adjustment
       let speedFactorToUse;
-      // Apply accelerated effect if less than 5% visible (including completely hidden)
-      // The previous logic was item.intersectionRatio < 0.05 (which includes 0)
-      // The requested logic is slightly more verbose but achieves the same:
-      if (item.intersectionRatio < 0.05 && item.intersectionRatio > 0) {
-        // Apply accelerated factor for exiting transition
-        speedFactorToUse = 1 + (item.initialSpeedFactor - 1) * 2;
-        speedFactorToUse = Math.max(-1, Math.min(3, speedFactorToUse)); // Clamp
-      } else if (item.intersectionRatio === 0) { // Completely hidden
-        // Continue using the accelerated factor
-        speedFactorToUse = 1 + (item.initialSpeedFactor - 1) * 2;
+      // Check if element is less than 5% visible (including completely hidden)
+      if (item.intersectionRatio < 0.05) {
+        // Apply accelerated factor for exiting transition or when hidden
+        speedFactorToUse = 1 + (item.initialSpeedFactor - 1) * 1.5; // Changed multiplier from 2 to 1.5
         speedFactorToUse = Math.max(-1, Math.min(3, speedFactorToUse)); // Clamp
       } else { // Element is 5% or more visible
         speedFactorToUse = item.initialSpeedFactor;

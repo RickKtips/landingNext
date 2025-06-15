@@ -18,28 +18,28 @@ export default function Home() {
 
   useEffect(() => {
     if (videoRef.current) {
-      registerParallaxElement(videoRef.current, 0.5);
+      registerParallaxElement(videoRef.current, 0.8); // Updated speedFactor
     }
     if (textContainerRef.current) {
-      registerParallaxElement(textContainerRef.current, 0.8);
+      registerParallaxElement(textContainerRef.current, 0.9); // Updated speedFactor
     }
     if (ecoSystemRef.current) {
-      registerParallaxElement(ecoSystemRef.current, 0.6);
+      registerParallaxElement(ecoSystemRef.current, 0.85); // Updated speedFactor
     }
     if (weAreDifferentBannerRef.current) {
-      registerParallaxElement(weAreDifferentBannerRef.current, 0.7);
+      registerParallaxElement(weAreDifferentBannerRef.current, 0.85); // Updated speedFactor
     }
-    if (globalMapRef.current) { // Added registration for globalMapRef
-      registerParallaxElement(globalMapRef.current, 0.65);
+    if (globalMapRef.current) {
+      registerParallaxElement(globalMapRef.current, 0.85); // Updated speedFactor
     }
     if (aboutUsImageRef.current) {
-      registerParallaxElement(aboutUsImageRef.current, 0.75);
+      registerParallaxElement(aboutUsImageRef.current, 0.9); // Updated speedFactor
     }
-    if (workflowImageContainerRef.current) { // Added registration for workflowImageContainerRef
-      registerParallaxElement(workflowImageContainerRef.current, 0.7);
+    if (workflowImageContainerRef.current) {
+      registerParallaxElement(workflowImageContainerRef.current, 0.85); // Updated speedFactor
     }
-    if (sourcingUlRef.current) { // Added registration for sourcingUlRef
-      registerParallaxElement(sourcingUlRef.current, 0.6);
+    if (sourcingUlRef.current) {
+      registerParallaxElement(sourcingUlRef.current, 0.8); // Updated speedFactor
     }
 
     // Cleanup function to unregister elements on component unmount
