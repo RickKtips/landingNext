@@ -2,7 +2,7 @@ interface ParallaxElement {
   element: HTMLElement;
   initialSpeedFactor: number;
   isIntersecting: boolean;
-  intersectionRatio: number; // Added to store the intersection ratio
+  intersectionRatio: number;
   observer: IntersectionObserver | null;
 }
 
@@ -12,8 +12,6 @@ let ticking = false;
 
 const updateParallax = () => {
   if (!parallaxElements.length) {
-    // If parallaxElements is empty, the listener should ideally have been removed.
-    // This check acts as a safeguard.
     if (isListening) {
         window.removeEventListener('scroll', handleScroll);
         isListening = false;
@@ -24,14 +22,23 @@ const updateParallax = () => {
 
   parallaxElements.forEach(item => {
     if (item.element) {
+      // Restoring visibility-based speed factor adjustment
       let speedFactorToUse;
       // Apply accelerated effect if less than 5% visible (including completely hidden)
-      if (item.intersectionRatio < 0.05) {
+      // The previous logic was item.intersectionRatio < 0.05 (which includes 0)
+      // The requested logic is slightly more verbose but achieves the same:
+      if (item.intersectionRatio < 0.05 && item.intersectionRatio > 0) {
+        // Apply accelerated factor for exiting transition
+        speedFactorToUse = 1 + (item.initialSpeedFactor - 1) * 2;
+        speedFactorToUse = Math.max(-1, Math.min(3, speedFactorToUse)); // Clamp
+      } else if (item.intersectionRatio === 0) { // Completely hidden
+        // Continue using the accelerated factor
         speedFactorToUse = 1 + (item.initialSpeedFactor - 1) * 2;
         speedFactorToUse = Math.max(-1, Math.min(3, speedFactorToUse)); // Clamp
       } else { // Element is 5% or more visible
         speedFactorToUse = item.initialSpeedFactor;
       }
+
       const newTransform = window.scrollY * (speedFactorToUse - 1);
       item.element.style.transform = `translateY(${newTransform}px)`;
     }
@@ -41,20 +48,14 @@ const updateParallax = () => {
 
 const handleScroll = () => {
   if (!ticking) {
-    ticking = true; // Prevent new frames until this one is done
+    ticking = true;
     window.requestAnimationFrame(() => {
       updateParallax();
-      // updateParallax will set ticking to false, but it's safer to do it here
-      // to ensure it's always reset after the frame.
-      // However, the current structure has updateParallax setting it.
-      // Let's stick to updateParallax setting it to false.
     });
   }
 };
 
 const observerOptions: IntersectionObserverInit = {
-  // Thresholds for when the observer's callback should be executed.
-  // More values mean more frequent callbacks as visibility changes.
   threshold: [0, 0.01, 0.02, 0.03, 0.04, 0.05, 0.1, 0.25, 0.5, 0.75, 1.0],
 };
 
@@ -72,9 +73,8 @@ const observerCallback: IntersectionObserverCallback = (entries) => {
     }
   });
 
-  // After updating intersecting states, request a parallax update if changes occurred and listener is active
   if (needsUpdate && isListening && !ticking) {
-     ticking = true; // Prevent race conditions with scroll-triggered updates
+     ticking = true;
      window.requestAnimationFrame(updateParallax);
   }
 };
@@ -85,13 +85,11 @@ export const registerParallaxElement = (element: HTMLElement, speedFactor: numbe
   let existingElement = parallaxElements.find(item => item.element === element);
   if (existingElement) {
     existingElement.initialSpeedFactor = speedFactor;
-    // Ensure observer is active
     if (!existingElement.observer) {
         const newObserver = new IntersectionObserver(observerCallback, observerOptions);
         newObserver.observe(element);
         existingElement.observer = newObserver;
     } else {
-        // If observer exists, ensure it's observing. This might be redundant if unobserve isn't misused.
         existingElement.observer.observe(element);
     }
     if (isListening) {
@@ -106,8 +104,8 @@ export const registerParallaxElement = (element: HTMLElement, speedFactor: numbe
   parallaxElements.push({
     element,
     initialSpeedFactor: speedFactor,
-    isIntersecting: false, // Will be updated by the observer
-    intersectionRatio: 0,  // Will be updated by the observer
+    isIntersecting: false,
+    intersectionRatio: 0,
     observer,
   });
 

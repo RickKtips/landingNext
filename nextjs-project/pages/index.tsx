@@ -11,8 +11,10 @@ export default function Home() {
   const textContainerRef = useRef<HTMLDivElement>(null);
   const ecoSystemRef = useRef<HTMLDivElement>(null);
   const weAreDifferentBannerRef = useRef<HTMLDivElement>(null);
-  const globalMapRef = useRef<HTMLDivElement>(null); // Added globalMapRef
-  const aboutUsImageRef = useRef<HTMLDivElement>(null); // Added aboutUsImageRef
+  const globalMapRef = useRef<HTMLDivElement>(null);
+  const aboutUsImageRef = useRef<HTMLDivElement>(null);
+  const workflowImageContainerRef = useRef<HTMLDivElement>(null); // Added workflowImageContainerRef
+  const sourcingUlRef = useRef<HTMLUListElement>(null); // Added sourcingUlRef
 
   useEffect(() => {
     if (videoRef.current) {
@@ -30,8 +32,14 @@ export default function Home() {
     if (globalMapRef.current) { // Added registration for globalMapRef
       registerParallaxElement(globalMapRef.current, 0.65);
     }
-    if (aboutUsImageRef.current) { // Added registration for aboutUsImageRef
+    if (aboutUsImageRef.current) {
       registerParallaxElement(aboutUsImageRef.current, 0.75);
+    }
+    if (workflowImageContainerRef.current) { // Added registration for workflowImageContainerRef
+      registerParallaxElement(workflowImageContainerRef.current, 0.7);
+    }
+    if (sourcingUlRef.current) { // Added registration for sourcingUlRef
+      registerParallaxElement(sourcingUlRef.current, 0.6);
     }
 
     // Cleanup function to unregister elements on component unmount
@@ -48,11 +56,17 @@ export default function Home() {
       if (weAreDifferentBannerRef.current) {
         unregisterParallaxElement(weAreDifferentBannerRef.current);
       }
-      if (globalMapRef.current) { // Added unregistration for globalMapRef
+      if (globalMapRef.current) {
         unregisterParallaxElement(globalMapRef.current);
       }
-      if (aboutUsImageRef.current) { // Added unregistration for aboutUsImageRef
+      if (aboutUsImageRef.current) {
         unregisterParallaxElement(aboutUsImageRef.current);
+      }
+      if (workflowImageContainerRef.current) { // Added unregistration for workflowImageContainerRef
+        unregisterParallaxElement(workflowImageContainerRef.current);
+      }
+      if (sourcingUlRef.current) { // Added unregistration for sourcingUlRef
+        unregisterParallaxElement(sourcingUlRef.current);
       }
     };
   }, []); // Empty dependency array ensures this runs once on mount and cleans up on unmount
@@ -95,7 +109,7 @@ to <span>life</span><br />
           <li>design</li>
       </ul>
     </div>
-    <div>
+    <div ref={workflowImageContainerRef}> {/* Attached workflowImageContainerRef */}
       <ul>
           <li className={styles.img1}>brief</li>
           <li className={styles.img2}>quotation</li>
@@ -119,7 +133,7 @@ Our technical background ensures safe, precise work with strong focus on cost-ef
 
     <div>
     
-      <ul>
+      <ul ref={sourcingUlRef}> {/* Attached sourcingUlRef */}
           <li className={styles.img1}>PREMIUM</li>
           <li className={styles.img2}>PRINTING</li>
           <li className={styles.img3}>POSM</li>
@@ -159,7 +173,7 @@ Our technical background ensures safe, precise work with strong focus on cost-ef
       <section  className={styles.weAreDifferent}>
         <div>
         <h3 data-aos="fade-right">We are <span>Different</span></h3>
-        <div ref={weAreDifferentBannerRef} className={styles.banner} data-aos="fade-left"></div> {/* Added ref to weAreDifferent banner div */}
+        <div ref={weAreDifferentBannerRef} className={styles.banner}></div> {/* Removed data-aos attribute */}
         </div>
 <ul>
 <li data-aos="fade-top">
