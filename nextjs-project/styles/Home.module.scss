@@ -138,6 +138,232 @@ a.secondary {
       text-align: left;
     }
   }
+
+  .aboutUs2 {
+    flex-direction: column;
+    align-items: center; /* Center items when stacked */
+    text-align: center; /* Center text for ul */
+    ul {
+      max-width: 100%; /* Allow ul to take full width */
+      align-items: center; /* Center list items if they are flex */
+    }
+    div { /* Image container */
+      float: none; /* Remove float for column layout */
+      width: 100%; /* Responsive width */
+      max-width: 400px; /* Max width for image */
+      margin: 2rem 0 0 0; /* Adjust margin for stacked layout */
+      height: 300px; /* Adjust height or make it auto based on content/aspect ratio */
+    }
+  }
+
+  .workflow {
+    padding: 50px 1rem 2rem; /* Reduced padding */
+    h3 {
+      font-size: 3em; /* Adjust font size */
+      line-height: 3rem;
+    }
+    h4 {
+      font-size: 1.5rem;
+      line-height: 1.8rem;
+      max-width: 100%;
+    }
+    &> div { /* The flex container for workflow steps */
+      flex-direction: column;
+      align-items: center; /* Center items when stacked */
+      &> div:first-child, &> div:last-child {
+        width: 100%; /* Full width for stacked items */
+      }
+      /* Hide horizontal lines and adjust lists for vertical layout */
+      &> div:first-child ul, &> div:last-child ul {
+        flex-direction: column; /* Stack list items */
+        align-items: center;
+        padding-top: 20px;
+        &::before {
+          display: none; /* Hide horizontal lines */
+        }
+        li {
+          margin-bottom: 1rem; /* Add some space between stacked items */
+        }
+      }
+      &> div:last-child ul li::before { /* Icons for steps */
+        margin: 0.5rem auto; /* Center icons */
+      }
+    }
+  }
+
+  .suppliers {
+    padding: 3rem 1rem; /* Reduced padding */
+    div {
+      h3 {
+        font-size: 3em; /* Adjust font size */
+        line-height: 3rem;
+        text-align: center;
+      }
+      ul {
+        flex-wrap: wrap;
+        justify-content: center; /* Center items when wrapped */
+        gap: 1rem;
+        li span {
+          width: 120px; /* Reduced logo size */
+          height: 120px;
+        }
+        &.short li span {
+          height: 80px; /* Adjust for short variant */
+        }
+      }
+    }
+  }
+
+  .clients {
+    padding: 3rem 1rem; /* Reduced padding */
+    &>div {
+      align-items: center; /* Center content when stacked */
+      h3 {
+        font-size: 3em; /* Adjust font size */
+        line-height: 3rem;
+        text-align: center;
+      }
+      h5 { /* Text below h3 */
+        text-align: center;
+        max-width: 100%;
+      }
+      ul {
+        justify-content: center; /* Center items */
+        max-width: 100%; /* Allow full width for wrapping */
+        li span {
+          width: 80px; /* Slightly smaller logos for mobile */
+          height: 80px;
+        }
+      }
+    }
+  }
+
+  .sourcing {
+    padding: 3rem 1rem; /* Reduced padding */
+    h3 {
+      font-size: 3em; /* Adjust font size */
+      line-height: 3rem;
+    }
+    h4 {
+      font-size: 1rem; /* Adjust font size */
+      line-height: 1.2rem;
+      max-width: 100%;
+    }
+    div ul {
+      flex-wrap: wrap;
+      justify-content: center; /* Center items when wrapped */
+      gap: 1rem; /* Add gap for wrapped items */
+      li {
+        font-size: 1.1rem; /* Adjust font size for smaller screens */
+        &::before { /* Icons */
+          height: 80px; /* Slightly smaller icons */
+          width: 80px;
+        }
+      }
+    }
+  }
+
+  .busEcoSystem {
+    flex-direction: column;
+    align-items: center; /* Center items when stacked */
+    padding: 50px 1rem 2rem; /* Reduced padding */
+    text-align: center; /* Center text */
+    h3 {
+      font-size: 3em; /* Adjust font size */
+      line-height: 3rem;
+    }
+    h4 {
+      width: 100%; /* Full width for text */
+      font-size: 1.5rem; /* Adjust font size */
+      line-height: 1.8rem;
+    }
+    .ecoSystem { /* Image */
+      width: 100%;
+      max-width: 500px; /* Max width for the image */
+      height: auto; /* Maintain aspect ratio */
+      min-height: 300px; /* Minimum height */
+      background-size: contain; /* Ensure whole image is visible */
+      margin-top: 2rem;
+    }
+  }
+
+  .weAreDifferent {
+    padding: 3rem 1rem; /* Reduced padding */
+    align-items: center; /* Center content */
+    h3 {
+      font-size: 3em; /* Adjust font size */
+      line-height: 3rem;
+      text-align: center;
+    }
+    &>div { /* Flex container */
+      flex-direction: column;
+      align-items: center; /* Center items when stacked */
+      .banner { /* Image */
+        width: 100%;
+        max-width: 450px; /* Max width for image */
+        height: auto; /* Maintain aspect ratio */
+        min-height: 150px; /* Minimum height */
+        background-size: contain;
+        margin-bottom: 2rem; /* Space between image and list */
+      }
+      ul {
+        flex-direction: column; /* Stack list items */
+        align-items: center; /* Center list items */
+        gap: 1rem; /* Gap between list items */
+        li {
+          text-align: center; /* Center text in list items */
+          strong {
+            font-size: 2rem; /* Adjust font size */
+          }
+        }
+      }
+    }
+  }
+
+  .globalStructure {
+    padding: 3rem 1rem; /* Reduced padding */
+    align-items: center; /* Center content */
+    h3 {
+      font-size: 3em; /* Adjust font size */
+      line-height: 3rem;
+      text-align: center;
+    }
+    h4 {
+      width: 100%; /* Full width */
+      text-align: center;
+      font-size: 1.5rem; /* Adjust font size */
+      line-height: 1.8rem;
+      margin: 1rem 0 2rem 0; /* Adjusted margin */
+    }
+    .globalMap {
+      float: none; /* Remove float */
+      width: 100%;
+      max-width: 600px; /* Max width for map */
+      height: auto; /* Maintain aspect ratio */
+      min-height: 250px; /* Minimum height */
+      background-size: contain;
+      margin: 0 auto; /* Center map */
+    }
+  }
+
+  .footer { /* Styles for 768px breakpoint */
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 3rem 1rem;
+    div { /* Text content */
+      width: 90%; /* Slightly less than full for medium screens */
+      margin-bottom: 2rem;
+      ul {
+        justify-content: center;
+      }
+    }
+    h5 { /* Logo */
+      height: 300px; /* Adjust height for medium screens */
+      width: 100px;
+      margin: 0 auto;
+    }
+  }
 }
 
 .aboutUs2{
@@ -813,9 +1039,47 @@ h5{
   }
 
   .footer {
-    flex-wrap: wrap;
-    align-items: center;
+    flex-direction: column; /* Stack items */
+    flex-wrap: wrap; /* Ensure wrapping if somehow items are still side-by-side */
+    align-items: center; /* Center items */
     justify-content: center;
+    padding: 3rem 1rem; /* Adjust padding */
+    div { /* Text content */
+      width: 100%; /* Full width */
+      text-align: center; /* Center text */
+      margin-bottom: 2rem; /* Space between text and logo */
+      ul {
+        justify-content: center; /* Center list items */
+        li {
+          width: auto; /* Adjust width, or set to 100% if they should stack */
+          padding: 0 0.5rem; /* Add some padding for wrapped items */
+        }
+      }
+    }
+    h5 { /* Logo */
+      width: 100px; /* Keep original width or make responsive */
+      height: 200px; /* Drastically reduce height */
+      background-position: center; /* Ensure logo is centered if it's a background */
+      margin: 0 auto; /* Center logo */
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .banner {
+    div {
+      align-items: flex-start; /* Adjust alignment for stacked content */
+      h2 {
+        font-size: 4rem; /* Reduced font size */
+        line-height: 3.8rem; /* Adjusted line height */
+        max-width: 100%; /* Allow full width */
+      }
+      h3 {
+        font-size: 1.8rem; /* Reduced font size */
+        line-height: 2rem; /* Adjusted line height */
+        max-width: 100%; /* Allow full width */
+      }
+    }
   }
 }
 
