@@ -110,24 +110,92 @@ font-family: "Montserrat", sans-serif;
 }
 
 @media (max-width: 768px) {
+  .textSlide2 {
+    flex-direction: column;
+    align-items: center; /* Center items when stacked */
+    padding: 0 1rem; /* Adjust padding */
+  }
+
   .title {
-    font-size: 1.8rem;
+    font-size: 2.7rem; /* Increased */
+    line-height: 2.9rem; /* Added */
+    margin: 0 0 0 0; /* Adjust margins for centered layout */
+    text-align: center;
   }
   .text {
-    font-size: 1rem;
+    font-size: 1.05rem; /* Increased */
+    line-height: 1.4rem; /* Added */
+    padding-left: 0; /* Remove side padding if centered */
+    max-width: 90%; /* Allow text to be wider */
+    text-align: center; /* Center text */
+  }
+
+  .banner {
+    width: 100%; /* Full width */
+    max-width: 350px; /* Max-width for the banner image */
+    height: 50vh; /* Adjust height, vh can be tricky on mobile due to URL bars */
+    min-height: 300px; /* Minimum height */
+    background-position: center; /* Center the background image */
+    margin: 1rem 0; /* Add some margin when stacked */
+  }
+
+  .lists {
+    flex-direction: column;
+    align-items: center; /* Center lists when stacked */
+    margin-top: 0; /* Reduce top margin */
+    gap: 0; /* Remove gap, handle spacing with list margins */
+
+    .list1, .list2 {
+      padding-left: 0; /* Remove side paddings */
+      margin: 1rem 0; /* Adjust margins for stacked layout */
+      width: 100%; /* Allow lists to take full available width */
+      max-width: 400px; /* Max width for lists for readability */
+      text-align: center; /* Center text within lists */
+    }
+
+    .list1 {
+      .how {
+        font-size: 2rem; /* Increased */
+      }
+      li {
+        font-size: 0.95rem; /* Increased */
+        line-height: 1.85rem; /* Adjusted */
+      }
+    }
+
+    .list2 {
+      padding-top: 1rem; /* Reduce top padding */
+      min-width: auto; /* Remove min-width */
+      li {
+        height: auto; /* Allow height to adjust to content */
+        display: flex; /* Use flex for icon and text alignment */
+        flex-direction: column; /* Stack icon and text for now, or row with alignment */
+        align-items: center; /* Center items */
+        margin-bottom: 1rem; /* Adjust margin */
+        font-size: 0.95rem; /* Increased */
+        line-height: 1.3rem; /* Adjusted */
+        &::before {
+          float: none; /* Remove float */
+          margin: 0 0 0.5rem 0; /* Adjust margin for centered icon above text */
+          width: 50px; /* Adjust icon size */
+          height: 50px;
+        }
+      }
+    }
   }
 }
 
 @media (max-width: 480px) {
-  .textSlide {
+  .textSlide2 { /* Corrected selector */
     padding: 15px;
-    min-height: 250px; /* Adjust height for smaller screens */
+    min-height: auto; /* Let content define height */
   }
   .title {
-    font-size: 1.5rem;
+    font-size: 1.8rem; /* Increased */
+    line-height: 2rem; /* Added */
   }
   .text {
-    font-size: 0.9rem;
-    line-height: 1.5;
+    font-size: 0.95rem; /* Increased */
+    line-height: 1.55; /* Adjusted */
   }
 }

@@ -95,6 +95,9 @@
 
 /* Media Queries for Arrows and Dots */
 @media (max-width: 768px) {
+  .casesSliderContainer {
+  height: auto;
+}
   .customPrevArrow {
     left: 10px; /* Bring arrows inside on tablets */
   }

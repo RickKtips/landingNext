@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import styles from '@/styles/Header.module.scss';
+import { useState } from 'react';
 
 const Header = () => {
   const handleScroll = (e, targetId) => {
@@ -12,18 +13,25 @@ const Header = () => {
     }
   };
 
+  const [isActive, setIsActive] = useState(false);
+
   return (
     <header className={styles.header}>
       <nav>
        
-        <ul className={styles.nav}>
-          <li className={styles.navItem}>
+          <div
+            className={isActive ? styles.btnResponsiveOn : styles.btnResponsive}
+            onClick={() => setIsActive(!isActive)}
+          >
+            <span></span>
+          </div>
+          
             <Link href="#banner" legacyBehavior>
               <a className={styles.navLink} onClick={(e) => handleScroll(e, 'banner')}>
                 <span><h1 className={styles.logo}>Next3</h1></span>
              </a>
-            </Link>
-          </li>
+            </Link>       
+        <ul className={isActive ? styles.navOn : styles.nav}>
           <li className={styles.navItem}>
             <Link href="#solutions" legacyBehavior>
               <a className={styles.navLink} onClick={(e) => handleScroll(e, 'solutions')}>

@@ -803,7 +803,7 @@ h5{
   }
 
   .ctas a {
-    font-size: 14px;
+    font-size: 15px; /* Increased */
     height: 40px;
     padding: 0 16px;
   }
@@ -813,11 +813,444 @@ h5{
   }
 
   .footer {
+    flex-direction: column; /* Stack items for 600px */
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+    padding: 2rem 1rem;
+    div {
+      width: 100%;
+      text-align: center;
+      font-size: 0.95rem; /* Added */
+      line-height: 1.3rem; /* Added */
+      margin-bottom: 2rem;
+      strong { /* Specific adjustment for 600px */
+        font-size: 1.3rem;
+        line-height: 1.6rem;
+      }
+      ul { /* Footer links list at 600px */
+        flex-direction: column; /* Stack links vertically */
+        align-items: center; /* Center links */
+        gap: 0.8rem;
+        padding-top: 1rem;
+        li {
+          width: 100%; /* Each link takes full width */
+          max-width: 220px; /* Max width for links */
+          padding: 0;
+          margin-bottom: 0;
+          text-align: center;
+        }
+      }
+    }
+    h5 {
+      width: 100px;
+      height: 200px;
+      background-position: center;
+      margin: 0 auto;
+    }
   }
 }
+
+/* Responsive styles for tablets and smaller devices */
+@media (max-width: 768px) {
+  .page {
+    padding: 40px 20px; /* Adjust page padding */
+  }
+
+  .banner {
+    height: auto; /* Adjust height for banner */
+    min-height: 60vh;
+    padding-bottom: 3rem; /* Add padding to bottom if video makes it too tall */
+    div {
+      align-items: center; /* Center content */
+      text-align: center;
+      padding: 0 1rem;
+      h2 {
+        font-size: 3.2rem; /* Increased */
+        line-height: 3.4rem; /* Increased */
+        max-width: 100%;
+      }
+      h3 {
+        font-size: 1.4rem; /* Increased */
+        line-height: 1.7rem; /* Increased */
+        max-width: 90%;
+        margin: 1rem auto 0 auto; /* Center h3 */
+      }
+    }
+  }
+
+  .aboutUs2 {
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem;
+    min-height: auto; /* Adjust min-height */
+    ul { /* Already flex-direction: column from base */
+      max-width: 100%;
+      align-items: center; /* Ensure items are centered */
+      text-align: center;
+      gap: 1rem;
+      li {
+        width: 100%;
+        max-width: 400px; /* Max width for list items */
+        margin-bottom: 1rem;
+        font-size: 0.9rem; /* Increased */
+        line-height: 1.2rem; /* Increased */
+        &::before {
+          margin-left: auto;
+          margin-right: auto;
+          margin-bottom: 0.3rem;
+          background-position: center center;
+          height: 40px; /* Adjust icon size */
+        }
+      }
+    }
+    div { /* Image container */
+      float: none;
+      width: 90%;
+      max-width: 350px;
+      margin: 2rem 0 0 0;
+      height: 280px;
+    }
+  }
+
+  .workflow {
+    padding: 2rem 1rem;
+    min-height: auto;
+    h3 {
+      font-size: 2.4em; /* Increased */
+      line-height: 2.7rem; /* Increased */
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    h4 {
+      font-size: 1.2rem; /* Increased */
+      line-height: 1.5rem; /* Increased */
+      max-width: 90%;
+      text-align: center;
+      margin: 0 auto 2rem auto; /* Center heading */
+    }
+    &> div {
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem; /* Add gap between the two inner divs */
+      &> div:first-child, &> div:last-child {
+        width: 100%;
+        max-width: 450px; /* Max width for content blocks */
+      }
+      &> div:first-child ul { /* Process selection list */
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+        padding-top: 10px;
+        gap: 0.5rem; /* Gap between list items */
+        &::before { /* Horizontal line */
+          display: none;
+        }
+        li {
+          margin-bottom: 0.5rem;
+          width: 100%;
+          text-align: left;
+          font-size: 1.05rem; /* Increased */
+          line-height: 1.4rem; /* Added */
+          color: var(--secondary-color); /* Ensure text is visible */
+          &::before { /* Circle styling */
+            margin: 0 0 0 0;
+            vertical-align: middle;
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background-color: var(--secondary-color); /* Ensure visible */
+          }
+        }
+      }
+      &> div:last-child {
+        &::before { /* Image above icon list */
+          margin: 0 auto 1rem auto;
+          height: 50px;
+        }
+        ul { /* Icon list */
+          flex-direction: column;
+          align-items: center;
+          padding-top: 10px;
+          width: 100%;
+          gap: 1rem; /* Gap between list items */
+          &::before { /* Horizontal line */
+            display: none;
+          }
+          li {
+            margin-bottom: 1rem;
+            width: 100%;
+            max-width: 250px;
+            font-size: 1.05rem; /* Increased */
+            line-height: 1.4rem; /* Added */
+            &::before {
+              margin: 0.5rem auto;
+              width: 50px;
+              height: 50px;
+            }
+          }
+        }
+        span { /* Text below icon list */
+          font-size: 1.05rem; /* Increased */
+          line-height: 1.5rem; /* Increased */
+          padding: 0.5rem; /* Add padding */
+        }
+      }
+    }
+  }
+
+  .sourcing {
+    padding: 2rem 1rem;
+    min-height: auto;
+    h3 {
+      font-size: 2.4em; /* Increased */
+      line-height: 2.7rem; /* Increased */
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    h4 {
+      font-size: 1.1rem; /* Increased */
+      line-height: 1.4rem; /* Increased */
+      max-width: 90%;
+      text-align: center;
+      margin: 0 auto 2rem auto;
+    }
+    div ul { /* List of sourced items */
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      width: 100%;
+      li {
+        font-size: 1.2rem; /* Increased */
+        line-height: 1.5rem; /* Added */
+        width: 100%;
+        max-width: 280px;
+        text-align: center;
+        &::before {
+          height: 70px;
+          width: 70px;
+          margin-left: auto;
+          margin-right: auto;
+          margin-bottom: 0.5rem;
+        }
+      }
+    }
+    div span { /* Text "Outsourcing" */
+      font-size: 1.4rem; /* Increased */
+      line-height: 1.9rem; /* Increased */
+      margin-top: 1.5rem;
+    }
+  }
+
+  .busEcoSystem {
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem;
+    text-align: center;
+    min-height: auto;
+    h3 {
+      font-size: 2.4em; /* Increased */
+      line-height: 2.7rem; /* Increased */
+      margin-bottom: 1rem;
+    }
+    h4 {
+      width: 90%;
+      font-size: 1.2rem; /* Increased */
+      line-height: 1.5rem; /* Increased */
+      margin: 0 auto 2rem auto;
+    }
+    .ecoSystem {
+      width: 90%;
+      max-width: 400px;
+      height: 300px;
+      background-size: contain;
+      margin-top: 1rem;
+    }
+  }
+
+  .weAreDifferent {
+    padding: 2rem 1rem;
+    align-items: center;
+    min-height: auto;
+    h3 {
+      font-size: 2.4em; /* Increased */
+      line-height: 2.7rem; /* Increased */
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    &>div {
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      .banner {
+        display: none;
+        width: 90%;
+        max-width: 400px;
+        height: 180px;
+        background-size: contain;
+        margin-bottom: 2rem;
+      }
+    }
+      ul { /* List of text items */
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1.5rem;
+        width: 100%;
+        max-width: 450px;
+        li {
+          text-align: center;
+          width: 100%;
+          font-size: 0.95rem; /* Increased */
+          line-height: 1.4rem; /* Increased */
+          padding: 0.8rem; /* Add padding to list items */
+          background-color: rgba(var(--gray-rgb), 0.03); /* Slight background for definition */
+          border-radius: 8px;
+          strong {
+            font-size: 1.6rem; /* Increased */
+            text-align: center;
+            display: block;
+            margin-bottom: 0.75rem;
+          }
+        }
+      }
+    
+  }
+
+  .suppliers {
+    padding: 2rem 1rem;
+    min-height: auto;
+    div {
+      align-items: center; /* Center the content of the div */
+      h3 {
+        font-size: 2.4em; /* Increased */
+        line-height: 2.7rem; /* Increased */
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+      ul { /* Applies to both normal and .short suppliers lists */
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+        width: 100%;
+        li {
+          width: auto;
+          margin-bottom: 0.5rem; /* Add margin for stacked items */
+          span {
+            width: 100px;
+            height: 100px;
+          }
+        }
+        &.short li span {
+          height: 70px;
+        }
+      }
+    }
+  }
+
+  .clients {
+    padding: 2rem 1rem;
+    min-height: auto;
+    &>div {
+      flex-direction: column;
+      align-items: center;
+      h3 {
+        font-size: 2.4em; /* Increased */
+        line-height: 2.7rem; /* Increased */
+        text-align: center;
+        margin-bottom: 1rem;
+      }
+      h5 {
+        text-align: center;
+        max-width: 90%;
+        font-size: 1.1rem; /* Increased */
+        line-height: 1.4rem; /* Increased */
+        margin: 0 auto 2rem auto;
+      }
+      ul { /* List of client logos */
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 1.5rem;
+        max-width: 100%;
+        li {
+          width: 40%;
+          margin-bottom: 0.5rem; /* Add margin for stacked items */
+          span {
+            width: 70px;
+            height: 70px;
+          }
+        }
+      }
+    }
+  }
+
+  .globalStructure {
+    padding: 2rem 1rem;
+    align-items: center;
+    min-height: auto;
+    h3 {
+      font-size: 2.4em; /* Increased */
+      line-height: 2.7rem; /* Increased */
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    h4 {
+      width: 90%;
+      text-align: center;
+      font-size: 1.2rem; /* Increased */
+      line-height: 1.5rem; /* Increased */
+      margin: 0 auto 2rem auto;
+    }
+    .globalMap {
+      float: none;
+      width: 90%;
+      max-width: 500px;
+      height: auto;
+      min-height: 220px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      margin: 0 auto;
+    }
+  }
+
+  .footer {
+    /* General footer stacking for 768px, similar to 600px but maybe less compressed */
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 2rem 1rem;
+    min-height: auto;
+    div {
+      width: 100%;
+      max-width: 320px;
+      margin-bottom: 2rem;
+      ul { /* Footer links list at 768px */
+        flex-direction: column; /* Stack links vertically */
+        align-items: center; /* Center links */
+        gap: 0.8rem;
+        padding-top: 1rem;
+        width: 100%;
+        li {
+          width: 100%;
+          max-width: 250px;
+          text-align: center;
+          margin-bottom: 0.2rem; /* Small margin between stacked links */
+          a {
+            font-size: 0.8rem; /* Increased */
+          }
+        }
+      }
+    }
+    h5 { /* Logo */
+      height: 220px;
+      width: 90px;
+      margin: 0 auto;
+    }
+  }
+}
+
 
 @media (prefers-color-scheme: dark) {
   .logo {

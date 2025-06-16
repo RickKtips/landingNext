@@ -9,6 +9,10 @@
   z-index: 1000;
   transition: padding 0.3s ease-in-out;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Add box shadow */
+
+  nav{  display: flex;
+  justify-content: center;
+  align-items: center;}
 }
 
 .nav {
@@ -26,6 +30,8 @@
     background: url('img/image20.png') no-repeat;
     background-size: contain;
   }
+
+}
   .logo{
     display: flex; margin: 0 5rem;
     height: 30px; width: 200px; 
@@ -33,8 +39,6 @@
     background-size: contain;
      text-indent: -9999px; 
   }
-}
-
 .navItem {
   margin: 0 0.5rem; /* Reduced margin slightly */
 }
@@ -50,18 +54,75 @@
 }
 
 .navLink:hover {
-  background-color: var(--header-hover-bg); /* Use CSS variable for hover */
   text-decoration: none; /* Remove underline on hover as bg changes */
+  color: var(--primary-color); /* Use primary color on hover */
 }
 
 /* Responsive adjustments for smaller screens */
 @media (max-width: 768px) {
+
+  .btnResponsive, .btnResponsiveOn {
+    display: block;
+    background: transparent;
+    border: none;
+    z-index: 601;
+    cursor: pointer;
+    height: 38px;
+    width: 38px;
+    margin:0 10px 0 10px;
+    top: 10px; left: 10px;
+		position: fixed;
+		padding: 7px 5px;
+		}
+
+    .btnResponsive span, .btnResponsive:after, .btnResponsive:before,
+    .btnResponsiveOn span, .btnResponsiveOn:after, .btnResponsiveOn:before {
+        display: block; position: relative;
+        height: 4px;
+        width: 28px;
+        background: var(--secondary-color); /* Use secondary color */
+        transition: all ease-in-out 0.3s;
+    }
+
+    .btnResponsive:after, .btnResponsive:before, .btnResponsiveOn:after, .btnResponsiveOn:before {
+        content: "";
+    }
+
+    .btnResponsive span, .btnResponsiveOn span{
+        margin: 6px 0;
+    }
+
+    .btnResponsiveOn span {
+        opacity: 0;
+    }
+
+    .btnResponsiveOn:after {
+        transform: rotate(-45deg);
+        margin-top: -20px;
+    }
+    .btnResponsiveOn:before {
+        transform: rotate(45deg);
+  	    margin-top: 10px;
+  }		
+
+
+
+
+
+
   .header {
     padding: 0.5rem 0;
+    nav{flex-direction: column;}
   }
 
   .nav {
+    display: none;
     flex-direction: column;
+    align-items: center;
+  }
+  .navOn{
+    display: flex !important;
+        flex-direction: column;
     align-items: center;
   }
 
@@ -72,7 +133,7 @@
   }
 
   .navLink {
-    font-size: 1rem;
+    font-size: 1.1rem; /* Increased */
     padding: 0.75rem 1rem; /* Increase padding for easier tap */
     display: block; /* Make link take full width of list item */
     width: 90%; /* Control width of the link itself */
@@ -82,7 +143,7 @@
 
 @media (max-width: 480px) {
   .navLink {
-    font-size: 0.9rem;
+    font-size: 1rem; /* Increased */
     padding: 0.6rem 0.8rem;
   }
 }

@@ -11,8 +11,10 @@ import Layout from '@/components/Layout';
 export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
     AOS.init({
-      duration: 700, // values from 0 to 3000, with step 50ms
-      once: true,     // whether animation should happen only once - while scrolling down
+      offset: 100, // values from 0 to 300, with step 10px
+      duration: 400, // values from 0 to 3000, with step 50ms
+      once: true, 
+      mirror:true,    // whether animation should happen only once - while scrolling down
       easing: 'ease-out-cubic', // example easing
     });
   }, []);

@@ -51,17 +51,20 @@
 /* Responsive adjustments for smaller screens */
 @media (max-width: 768px) {
   .section {
+    overflow: hidden;
+    justify-content: flex-start; /* Align content to the top */
     padding: 70px 20px 20px; /* Adjust padding for tablets */
   }
 
   .title {
-    font-size: 2.2rem;
+    font-size: 2.4rem; /* Increased */
+    line-height: 2.6rem; /* Added */
     margin-bottom: 15px;
   }
 
   .content p {
-    font-size: 1rem;
-    line-height: 1.6;
+    font-size: 1.05rem; /* Increased */
+    line-height: 1.65; /* Adjusted */
   }
 }
 
@@ -72,10 +75,12 @@
   }
 
   .title {
-    font-size: 1.8rem;
+    font-size: 2rem; /* Increased */
+    line-height: 2.2rem; /* Added */
   }
 
   .content p {
-    font-size: 0.95rem;
+    font-size: 1rem; /* Increased */
+    line-height: 1.55; /* Added */
   }
 }
