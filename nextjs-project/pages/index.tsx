@@ -136,7 +136,7 @@ Our technical background ensures safe, precise work with strong focus on cost-ef
           <li className={styles.img3}>POSM</li>
           <li className={styles.img4}>PACKAGING</li>
       </ul>
-      <span ref={sourcingUlRef}>O u t s o u r c i n g</span>
+      <span>O u t s o u r c i n g</span>
   </div>
     </section>
       </Section>
