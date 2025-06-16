@@ -14,18 +14,20 @@
   z-index: 10;
   cursor: pointer;
   border: none;
-  background-color:var(--primary-color, rgba(255, 255, 255, 0.8)); /* Default to primary color with some transparency */
+  background-color:var(--primary-color); /* Default to primary color with some transparency */
   border-radius: 10px;
   width: 40px; /* Slightly larger */
   height: 300px;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+    opacity: 0.8; /* Slightly transparent on hover */
 }
 
 .customArrow:hover {
-  background-color: rgba(255, 255, 255, 1);
+  background-color: var(--primary-color);
+  opacity: 1; /* Fully opaque on hover */
 }
 
 .customArrow::before {
