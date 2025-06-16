@@ -129,14 +129,14 @@ Our expertise enables full-service management of marketing, sourcing, giveaways,
 Our technical background ensures safe, precise work with strong focus on cost-efficiency and brand integrity.
 
 </h4>
-    <div ref={sourcingUlRef}>
-      <ul>
+    <div>
+      <ul ref={sourcingUlRef}>
           <li className={styles.img1}>PREMIUM</li>
           <li className={styles.img2}>PRINTING</li>
           <li className={styles.img3}>POSM</li>
           <li className={styles.img4}>PACKAGING</li>
       </ul>
-      <span>O u t s o u r c i n g</span>
+      <span ref={sourcingUlRef}>O u t s o u r c i n g</span>
   </div>
     </section>
       </Section>
