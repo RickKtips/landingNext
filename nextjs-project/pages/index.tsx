@@ -1,10 +1,75 @@
 import Head from 'next/head';
+import { useEffect, useRef } from 'react'; // Added useEffect and useRef
 import styles from '@/styles/Home.module.scss';
 import Section from '@/components/Section';
 import CasesSlider from '@/components/CasesSlider'; // Corrected import path
-import { YouTubeEmbed } from '@next/third-parties/google';
+import { registerParallaxElement, unregisterParallaxElement } from '../utils'; // Imported parallax functions
 
 export default function Home() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const textContainerRef = useRef<HTMLDivElement>(null);
+  const ecoSystemRef = useRef<HTMLDivElement>(null);
+  const weAreDifferentBannerRef = useRef<HTMLDivElement>(null);
+  const globalMapRef = useRef<HTMLDivElement>(null);
+  const aboutUsImageRef = useRef<HTMLDivElement>(null);
+  const workflowImageContainerRef = useRef<HTMLDivElement>(null); // Added workflowImageContainerRef
+  const sourcingUlRef = useRef<HTMLUListElement>(null); // Added sourcingUlRef
+
+  useEffect(() => {
+    if (videoRef.current) {
+      registerParallaxElement(videoRef.current, 0.1); // New strengthFactor
+    }
+    if (textContainerRef.current) {
+      registerParallaxElement(textContainerRef.current, 0.15); // New strengthFactor
+    }
+    if (ecoSystemRef.current) {
+      registerParallaxElement(ecoSystemRef.current, 0.1); // New strengthFactor
+    }
+    if (weAreDifferentBannerRef.current) {
+      registerParallaxElement(weAreDifferentBannerRef.current, 0.1); // New strengthFactor
+    }
+    if (globalMapRef.current) {
+      registerParallaxElement(globalMapRef.current, 0.1); // New strengthFactor
+    }
+    if (aboutUsImageRef.current) {
+      registerParallaxElement(aboutUsImageRef.current, 0.08); // New strengthFactor
+    }
+    if (workflowImageContainerRef.current) {
+      registerParallaxElement(workflowImageContainerRef.current, 0.15); // New strengthFactor
+    }
+    if (sourcingUlRef.current) {
+      registerParallaxElement(sourcingUlRef.current, 0.15); // New strengthFactor
+    }
+
+    // Cleanup function to unregister elements on component unmount
+    return () => {
+      if (videoRef.current) {
+        unregisterParallaxElement(videoRef.current);
+      }
+      if (textContainerRef.current) {
+        unregisterParallaxElement(textContainerRef.current);
+      }
+      if (ecoSystemRef.current) {
+        unregisterParallaxElement(ecoSystemRef.current);
+      }
+      if (weAreDifferentBannerRef.current) {
+        unregisterParallaxElement(weAreDifferentBannerRef.current);
+      }
+      if (globalMapRef.current) {
+        unregisterParallaxElement(globalMapRef.current);
+      }
+      if (aboutUsImageRef.current) {
+        unregisterParallaxElement(aboutUsImageRef.current);
+      }
+      if (workflowImageContainerRef.current) { // Added unregistration for workflowImageContainerRef
+        unregisterParallaxElement(workflowImageContainerRef.current);
+      }
+      if (sourcingUlRef.current) { // Added unregistration for sourcingUlRef
+        unregisterParallaxElement(sourcingUlRef.current);
+      }
+    };
+  }, []); // Empty dependency array ensures this runs once on mount and cleans up on unmount
+
   return (
     <div className={styles.container}>
       <Head>
@@ -14,10 +79,12 @@ export default function Home() {
       </Head>
 <Section id="banner" title="Inicio">
 <div className={styles.banner}>
-<video autoPlay muted loop>
+{/* Added ref to video element */}
+<video ref={videoRef}  poster="image11.png" autoPlay muted loop>
 <source src="NEXT3REEL2.webm" type="video/webm" />
 </video>
-<div>
+{/* Added ref to text container div */}
+<div ref={textContainerRef}>
 <h2  data-aos="fade-left">we bring<br />
 your <span>ideas</span><br />
 to <span>life</span><br />
@@ -32,7 +99,7 @@ to <span>life</span><br />
 <h4>Our multidisciplinary expertise ensures high performance, end-to-end execution of marketing and sourcing solutions, for both services and products.
 </h4>
 
-  <div>
+  <div ref={workflowImageContainerRef}>
     <div>
       <ul>
           <li>Calendar & brief</li>
@@ -41,7 +108,7 @@ to <span>life</span><br />
           <li>design</li>
       </ul>
     </div>
-    <div>
+    <div> 
       <ul>
           <li className={styles.img1}>brief</li>
           <li className={styles.img2}>quotation</li>
@@ -62,10 +129,8 @@ Our expertise enables full-service management of marketing, sourcing, giveaways,
 Our technical background ensures safe, precise work with strong focus on cost-efficiency and brand integrity.
 
 </h4>
-
     <div>
-    
-      <ul>
+      <ul ref={sourcingUlRef}>
           <li className={styles.img1}>PREMIUM</li>
           <li className={styles.img2}>PRINTING</li>
           <li className={styles.img3}>POSM</li>
@@ -82,18 +147,18 @@ Our technical background ensures safe, precise work with strong focus on cost-ef
         <h3 data-aos="fade-right">business<br /><span>Ecosystem</span></h3>
         <h4 data-aos="fade-left">NEXT3 is the single point of contact for streamlined and efficient management. Through a specialized ecosystem of companies, we integrate specific solutions across the entire chain. from strategy to execution, ensuring synergy, agility, and superior results at every stage.</h4>
         </div>
-        <div className={styles.ecoSystem}></div>
+        <div ref={ecoSystemRef} className={styles.ecoSystem}></div> 
         </section>
     <section className={styles.suppliers}>
       <div>
       <h3>suppliers<br /><span>certifications</span></h3>
-      <ul className={styles.short}>
+      <ul className={styles.short} data-aos="zoom-in-up">
         <li><span className={styles.img1}>Smeta</span></li>
         <li><span className={styles.img2}>Coca Cola</span></li>
         <li><span className={styles.img3}>Ecovadis</span></li>
         <li><span className={styles.img4}>Loreal</span></li>
         </ul>
-        <ul>
+        <ul data-aos="zoom-in-up">
         <li><span className={styles.img5}>FSC</span></li>
         <li><span className={styles.img6}>ISO14001</span></li>
         <li><span className={styles.img7}>OHSAS18001</span></li>
@@ -105,32 +170,32 @@ Our technical background ensures safe, precise work with strong focus on cost-ef
       <section  className={styles.weAreDifferent}>
         <div>
         <h3 data-aos="fade-right">We are <span>Different</span></h3>
-        <div className={styles.banner} data-aos="fade-left"></div>
+        <div ref={weAreDifferentBannerRef} className={styles.banner}></div> {/* Removed data-aos attribute */}
         </div>
 <ul>
-<li data-aos="fade-top">
+<li data-aos="fade-up">
 <strong className={styles.even}>Technical dna</strong>
 Our creative and technical expertise in developing promotional products and point-of-sale materials allows us to deliver cost-effective, end-to-end solutions that ensure quality and align with marketing goals.
 </li>
-<li data-aos="fade-top">
+<li data-aos="fade-up">
 <strong>transparency</strong>
 Full project visibility ensures easy compliance with processes and steps.
 With real-time progress tracking, teams and leaders can focus on priorities, spot trends, act fast, and adjust as needed, all with open communication and shared dashboards for client stakeholders.
 
 </li>
-<li data-aos="fade-top">
+<li data-aos="fade-up">
 <strong className={styles.even}>flexibility</strong>
 We adapt our business model and workflows to meet the operational and strategic needs of each client, responding to their specific challenges with flexibility and partnership.
 
 </li>
-<li data-aos="fade-top">
+<li data-aos="fade-up">
 <strong>quality</strong>
 High standards across production and strategic processes, with full monitoring of every project stage and its evolution.
 We ensure 100% legal, fiscal, and quality compliance in every country we operate.
 Dedicated in-house teams handle quality assurance and quality control.
 
 </li>
-<li data-aos="fade-top">
+<li data-aos="fade-up">
 <strong className={styles.even}>Supply chain</strong>
 We operate a borderless, global product development network, built to identify and deliver the best solutions in production, materials, or technology.
 
@@ -145,8 +210,9 @@ We operate a borderless, global product development network, built to identify a
       <div>
         <div>
       <h3 data-aos="fade-right">Our<span>clients</span></h3>
-      <h5 data-aos="fade-top">These are some of the companies Score Group is proud to call clients. More than commercial relationships, we build long-term strategic partnerships with some of the world’s leading brands.</h5>
-      </div><ul>
+      <h5 data-aos="fade-up">These are some of the companies Score Group is proud to call clients. More than commercial relationships, we build long-term strategic partnerships with some of the world’s leading brands.</h5>
+      </div>
+      <ul  data-aos="fade-left">
         <li><span className={styles.img1}>Sanofi</span></li>
         <li><span className={styles.img2}>shell</span></li>
         <li><span className={styles.img3}>Ype</span></li>
@@ -179,7 +245,7 @@ We operate a borderless, global product development network, built to identify a
       <section className={styles.globalStructure}>
         <h3 data-aos="fade-right">global<br /><span>structure</span></h3>
         <h4 data-aos="fade-left">our offices:</h4>
-        <div className={styles.globalMap}></div>
+        <div ref={globalMapRef} className={styles.globalMap}></div> {/* Added ref to globalMap div */}
       </section>
 
       <section className={styles.aboutUs2}>
@@ -196,12 +262,12 @@ Score Group leads the retail pillar within the B&Partners ecosystem.
 <li data-aos="fade-right">
 B&Partners is a collaborative ecosystem designed to drive sustainable growth for brands, companies, investors, and professionals. By connecting expertise across multiple disciplines, it empowers strategic decision-making, innovation, and long-term value creation.
 </li>
-<li data-aos="fade-top">
+<li data-aos="fade-up">
   Learn more:<br />
   <a href="https://www.Scoregroup.com.br" target="_blank" rel="noopener noreferrer">www.Scoregroup.com.br</a>
 </li>
         </ul>
-<div>&nbsp;</div>
+<div ref={aboutUsImageRef}>&nbsp;</div> 
       </section>
       
       </Section>

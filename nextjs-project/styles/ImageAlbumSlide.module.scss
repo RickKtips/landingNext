@@ -51,7 +51,8 @@
 
 @media (max-width: 768px) {
   .title {
-    font-size: 1.8rem;
+    font-size: 2rem; /* Increased */
+    line-height: 2.2rem; /* Added */
   }
   .gallery {
     gap: 8px;
@@ -68,7 +69,8 @@
     min-height: 280px; /* Adjust height */
   }
   .title {
-    font-size: 1.5rem;
+    font-size: 1.7rem; /* Increased */
+    line-height: 1.9rem; /* Added */
     margin-bottom: 1rem;
   }
   .gallery {

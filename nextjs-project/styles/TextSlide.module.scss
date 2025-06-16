@@ -42,10 +42,11 @@
 
 @media (max-width: 768px) {
   .title {
-    font-size: 1.8rem;
+    font-size: 2rem; /* Increased */
+    line-height: 2.2rem; /* Added */
   }
   .text {
-    font-size: 1rem;
+    font-size: 1.05rem; /* Increased */
   }
 }
 
@@ -55,10 +56,11 @@
     min-height: 250px; /* Adjust height for smaller screens */
   }
   .title {
-    font-size: 1.5rem;
+    font-size: 1.7rem; /* Increased */
+    line-height: 1.9rem; /* Added */
   }
   .text {
-    font-size: 0.9rem;
+    font-size: 0.95rem; /* Increased */
     line-height: 1.5;
   }
 }
